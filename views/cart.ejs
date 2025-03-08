@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+  <nav class='flex justify-between items-center px-20 h-[80px] border-b'>
+    <a href="#" class='font-medium text-3xl'>Cart.</a>
+    <div class='flex gap-12'>
+      <div class='flex gap-5 font-medium text-base'>
+        <div><a href="/">Home</a></div>
+        <div><a href="#">My Account</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <main class='p-12 py-8 flex flex-col gap-6 justify-center items-center'>
+
+    <div class='flex flex-col justify-center items-center'>
+      <h1 class='font-semibold text-4xl'>Scatch:</h1>
+      <h2>Discover the Art of Handcrafted Bags</h2>
+    </div>
+
+    <div class='flex w-4/5 flex-wrap gap-x-24 gap-y-10'>
+
+      <% carts.forEach(element=> {%>
+        <div class="itemContainer flex gap-6 justify-center items-center">
+          <div class='w-[250px] h-[250px] rounded-md'><img alt="ecommerce"
+              class="object-cover object-center rounded-md w-full h-full block"
+              src="data:image/jpeg;base64,<%= element.image.toString('base64') %>"></img>
+          </div>
+          <div class='w-[400px]'>
+            <h2 class="text-sm text-gray-500"><%= element.brand %></h2>
+            <h2 class="text-gray-900 text-xl title-font font-medium mb-1">The Catcher</h2>
+            <div class="flex border-t border-gray-200 py-2 pr-2">
+              <span class="text-gray-500 text-sm">Price</span>
+              <span class="ml-auto text-gray-900 text-sm"><%= element.price %>$</span>
+            </div>
+            <div class="flex border-t border-gray-200 py-2 pr-2">
+              <span class="text-gray-500 text-sm">Discount</span>
+              <span class="ml-auto text-gray-900 text-sm"><%= element.discount %>$</span>
+            </div>
+            <div class="flex border-t border-b border-gray-200 py-2 pr-2">
+              <span class="text-gray-500 text-sm">Shipping Fee</span>
+              <span class="ml-auto text-gray-900 text-sm">FREE</span>
+            </div>
+            <div class="flex mb-1 border-gray-200 py-2 pr-2">
+              <span class="text-gray-500">Total Cost</span>
+              <% const total = element.price - element.discount %>
+              <span class="ml-auto text-gray-900"><%= total %>$ Only</span>
+            </div>
+            <button class='text-white bg-black px-6 py-2 rounded-md text-sm'>Place Order</button>
+          </div>
+        </div>
+        <%}); %>
+
+    </div>
+
+  </main>
+</body>
+
+</html>

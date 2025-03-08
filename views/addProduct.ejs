@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <nav class='flex justify-between items-center px-20 h-[80px] border-b'>
+        <a href="#" class='font-medium text-3xl'>Admin Panel.</a>
+        <div class='flex gap-12'>
+          <div class='flex gap-5 font-medium text-base'>
+            <div>Home</div>
+            <div>Products</div>
+          </div>
+          <div class='flex gap-5 font-medium text-base'>
+            <div>Cart</div>
+            <div>My Account</div>
+          </div>
+        </div>
+      </nav>
+
+      <main class='flex'>
+        <aside class='flex flex-col h-[80vh] px-16 py-12 w-[18%] font-light'>
+          <h2>All Products</h2>
+          <h2 class='font-medium'>Create New Product</h2>
+        </aside>
+
+        <section class='flex flex-col w-[82%] p-10'>
+          <h1 class='text-3xl font-medium py-6 border-b-[2px] border-[#d0d3d4]'>Create New Product</h1>
+
+          <h2 class='text-2xl font-medium mt-10 ml-5'>Product Details</h2>
+
+          <form action="/admin/createproduct" method="post" enctype="multipart/form-data" class='mt-1 flex flex-col gap-5 p-5 w-[400px]'>
+            <div class="flex gap-3 items-center">
+              <p class="mt-2 font-medium text-lg">Product Image.</p>
+              <label for="fileInput" class="bg-blue-500 text-white font-bold px-6 py-2.5 text-sm rounded-full cursor-pointer relative top-1 hover:bg-blue-600">Select file</label>
+              <input id="fileInput" type="file" class="hidden" name="image" />
+            </div>
+            <input type="text" class='p-2.5 bg-[#ecf0f1] border-0 outline-0 rounded-lg' placeholder='Brand Name' name="brand" required/>
+            <input type="text" class='p-2.5 bg-[#ecf0f1] border-0 outline-0 rounded-lg' placeholder='Product Name' name="name" required/>
+            <div class='flex gap-3'>
+            <input type="number" step="0.01" class='p-2.5 bg-[#ecf0f1] border-0 outline-0 rounded-lg w-2/5' placeholder='Price' name="price" required/>
+            <input type="number" step="0.01" class='p-2.5 bg-[#ecf0f1] border-0 outline-0 rounded-lg w-2/5' placeholder='Discount' name="discount"/>
+            </div>
+            <input type="submit" value="Add Product" class='w-[200px] py-2.5 bg-blue-500 text-white rounded-full cursor-pointer' />
+          </form>
+        </section>
+       <% if (sucess) {%>
+        <div class="absolute bottom-[50px] right-[100px] text-green-500 text-sm font-medium"><%= sucess %></div>
+       <%} %>
+       <% if (error) {%>
+        <div class="absolute bottom-[50px] right-[100px] text-red-500 text-sm font-medium"><%= error %></div>
+       <%} %>
+      </main>
+</body>
+</html>
