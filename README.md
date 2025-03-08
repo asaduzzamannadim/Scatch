@@ -20,4 +20,4 @@ A practice backend project for a mini bag-selling platform. This project demonst
 - **Multer**: Handles file uploads.
 
 ## Note
-This is a practice project and will not be further developed. It serves as a learning tool for exploring backend development concepts.
+This is a practice project and will not be further developed. It's not responsive and incomplete.It serves as a learning tool for exploring backend development concepts.
